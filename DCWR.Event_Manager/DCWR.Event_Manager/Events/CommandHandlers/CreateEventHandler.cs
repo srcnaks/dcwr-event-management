@@ -9,12 +9,12 @@ namespace DCWR.Event_Manager.Events.CommandHandlers
         ICommandHandler<CreateEvent>
     {
         private readonly IEventBuilder eventBuilder;
-        private readonly IEventRepository eventRepository;
+        private readonly IEntityRepository<Event> eventRepository;
         private readonly ICreateEventValidator createEventValidator;
 
         public CreateEventHandler(
             IEventBuilder eventBuilder,
-            IEventRepository eventRepository, 
+            IEntityRepository<Event> eventRepository, 
             ICreateEventValidator createEventValidator)
         {
             this.eventBuilder = eventBuilder;

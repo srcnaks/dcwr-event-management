@@ -2,7 +2,7 @@
 
 namespace DCWR.Event_Manager.Events
 {
-    public static class ContractMapperExtensions
+    public static class EventsContractMapperExtensions
     {
         public static EventData ToContract(this Event @event)
         {
