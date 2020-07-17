@@ -14,8 +14,7 @@ namespace DCWR.Event_Manager.Events
         public DateTime StartTime { get; private set; }
         public DateTime EndTime { get; private set; }
 
-        [ForeignKey("EventId")]
-        public ICollection<Registrations.Registration> Attendees { get; set; }
+        public ICollection<Registrations.Registration> Attendees { get; }
 
         public Event(
             Guid id, 
