@@ -1,5 +1,4 @@
-﻿using DCWR.Event_Manager.Events;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DCWR.Event_Manager.Registrations
