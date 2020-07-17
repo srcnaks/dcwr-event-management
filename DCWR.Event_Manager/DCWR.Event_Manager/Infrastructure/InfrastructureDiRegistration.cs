@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DCWR.Event_Manager.Infrastructure
 {
@@ -8,6 +9,7 @@ namespace DCWR.Event_Manager.Infrastructure
         {
             serviceCollection.AddScoped(typeof(IEntityRepository<>), typeof(EntityRepository<>));
             serviceCollection.AddSingleton<IGuidIdGenerator>(GuidIdGenerator.Instance);
+            serviceCollection.AddScoped(typeof(IPasswordHasher<>), typeof(PasswordHasher<>));
         }
     }
 }

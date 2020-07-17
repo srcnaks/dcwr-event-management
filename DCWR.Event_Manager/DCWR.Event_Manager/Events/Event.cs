@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using DCWR.Event_Manager.Infrastructure;
 
 namespace DCWR.Event_Manager.Events

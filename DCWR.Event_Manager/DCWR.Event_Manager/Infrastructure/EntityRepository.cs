@@ -56,7 +56,7 @@ namespace DCWR.Event_Manager.Infrastructure
                 .ToListAsync();
         }
 
-        private IQueryable<T> GetQuery()
+        protected IQueryable<T> GetQuery()
         {
             return dbContext.Set<T>();
         }
