@@ -17,7 +17,6 @@ namespace DCWR.Event_Manager.Registrations
             serviceCollection.AddScoped<ICommandHandler<RegisterToEvent>, RegisterToEventCommandHandler>();
             serviceCollection.AddScoped<IRegisterToEventValidator, RegisterToEventValidator>();
             serviceCollection.AddScoped<IRegistrationBuilder, RegistrationBuilder>();
-            serviceCollection.AddScoped<IEntityRepository<Registration>, EntityRepository<Registration>>();
             serviceCollection.AddScoped<IQueryHandler<GetRegistrations, PagedResponse<AttendeeData>>, GetRegistrationsQueryHandler>();
             serviceCollection.AddScoped<IAttendeeDataRetriever, AttendeeDataRetriever>();
         }

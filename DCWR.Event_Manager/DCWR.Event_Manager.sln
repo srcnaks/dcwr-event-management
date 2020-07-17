@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCWR.Event_Manager", "DCWR.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCWR.Event_Manager.Contracts", "DCWR.Event_Manager.Contracts\DCWR.Event_Manager.Contracts.csproj", "{6F727B31-2676-4FC1-AEF7-12595044B02A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCWR.Event_Manager.Tests", "DCWR.Event_Manager.Tests\DCWR.Event_Manager.Tests.csproj", "{9F026A60-3D18-4C3A-833D-457D15B10FD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6F727B31-2676-4FC1-AEF7-12595044B02A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F727B31-2676-4FC1-AEF7-12595044B02A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F727B31-2676-4FC1-AEF7-12595044B02A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F026A60-3D18-4C3A-833D-457D15B10FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F026A60-3D18-4C3A-833D-457D15B10FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F026A60-3D18-4C3A-833D-457D15B10FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F026A60-3D18-4C3A-833D-457D15B10FD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

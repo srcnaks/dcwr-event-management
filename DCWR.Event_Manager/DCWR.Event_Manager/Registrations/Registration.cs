@@ -7,13 +7,14 @@ namespace DCWR.Event_Manager.Registrations
 {
     public class Registration : IEntity
     {
-        public Guid Id { get; }
+        public Guid Id { get; private set; }
         public Guid EventId { get; }
         public string Email { get; }
         public string Name { get; private set; }
         public string PhoneNumber { get; private set; }
+
         [ForeignKey("EventId")]
-        public Event Event { get; }
+        public Event Event { get; set; }
 
         public Registration(
             Guid id,

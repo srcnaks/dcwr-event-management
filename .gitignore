@@ -14,3 +14,8 @@
 *.pdb
 /DCWR.Event_Manager/DCWR.Event_Manager.WebApi/bin/Debug/netcoreapp3.1/DCWR.Event_Manager.WebApi.runtimeconfig.dev.json
 /DCWR.Event_Manager/DCWR.Event_Manager.WebApi/bin/Debug/netcoreapp3.1/DCWR.Event_Manager.WebApi.runtimeconfig.json
+/DCWR.Event_Manager/DCWR.Event_Manager.Tests/bin/Debug/netcoreapp3.1
+/DCWR.Event_Manager/DCWR.Event_Manager.Tests/obj
+/obj
+/DCWR.Event_Manager/obj
+/DCWR.Event_Manager/DCWR.Event_Manager.WebApi/DCWR.Event_Manager.WebApi.csproj.user

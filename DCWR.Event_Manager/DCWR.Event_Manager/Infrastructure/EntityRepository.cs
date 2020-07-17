@@ -10,15 +10,23 @@ namespace DCWR.Event_Manager.Infrastructure
     {
         Task AddAsync(T entity);
         Task<bool> ExistsAsync(Guid id);
-        Task<int> GetCount(Predicate<T> predicate = null);
+        Task<int> GetCountAsync(Predicate<T> predicate = null);
         Task<IReadOnlyCollection<T>> GetAsync(int pageSize, int pageNumber, Predicate<T> predicate = null);
     }
     
     internal class EntityRepository<T> : IEntityRepository<T> where T : class, IEntity
     {
-        public Task AddAsync(T entity)
+        private readonly EventManagerDbContext dbContext;
+
+        public EntityRepository(EventManagerDbContext dbContext)
         {
-            throw new NotImplementedException();
+            this.dbContext = dbContext;
+        }
+
+        public async Task AddAsync(T entity)
+        {
+            await dbContext.AddAsync(entity);
+            await dbContext.SaveChangesAsync();
         }
 
         public Task<bool> ExistsAsync(Guid id)
@@ -27,7 +35,7 @@ namespace DCWR.Event_Manager.Infrastructure
                 .AnyAsync(x => x.Id == id);
         }
 
-        public async Task<int> GetCount(Predicate<T> predicate = null)
+        public async Task<int> GetCountAsync(Predicate<T> predicate = null)
         {
             var query = GetQuery();
             if (predicate != null)
@@ -50,7 +58,7 @@ namespace DCWR.Event_Manager.Infrastructure
 
         private IQueryable<T> GetQuery()
         {
-            throw new NotImplementedException();
+            return dbContext.Set<T>();
         }
     }
 }

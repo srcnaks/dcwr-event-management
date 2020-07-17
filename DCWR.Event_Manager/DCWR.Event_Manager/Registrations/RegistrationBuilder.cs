@@ -1,5 +1,5 @@
-﻿using System;
-using DCWR.Event_Manager.Contracts.Registrations.Commands;
+﻿using DCWR.Event_Manager.Contracts.Registrations.Commands;
+using DCWR.Event_Manager.Infrastructure;
 
 namespace DCWR.Event_Manager.Registrations
 {
@@ -10,14 +10,21 @@ namespace DCWR.Event_Manager.Registrations
 
     public class RegistrationBuilder : IRegistrationBuilder
     {
+        private readonly IGuidIdGenerator guidIdGenerator;
+
+        public RegistrationBuilder(IGuidIdGenerator guidIdGenerator)
+        {
+            this.guidIdGenerator = guidIdGenerator;
+        }
+
         public Registration BuildWith(RegisterToEvent command)
         {
             return new Registration(
-                Guid.NewGuid(),
-                command.EventId,
-                command.Email,
-                command.Name,
-                command.PhoneNumber
+                id: guidIdGenerator.Generate(),
+                eventId: command.EventId,
+                email: command.Email,
+                name: command.Name,
+                phoneNumber: command.PhoneNumber
             );
         }
     }

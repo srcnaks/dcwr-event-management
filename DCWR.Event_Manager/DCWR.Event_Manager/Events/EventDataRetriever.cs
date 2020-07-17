@@ -34,7 +34,7 @@ namespace DCWR.Event_Manager.Events
 
         private async Task<PagingInfo> GetPagingInfo(int pageSize, int pageNumber, Predicate<Event> predicate)
         {
-            var totalCount = await eventRepository.GetCount(predicate);
+            var totalCount = await eventRepository.GetCountAsync(predicate);
             return new PagingInfo(pageNumber, pageSize, totalCount);
         }
     }
