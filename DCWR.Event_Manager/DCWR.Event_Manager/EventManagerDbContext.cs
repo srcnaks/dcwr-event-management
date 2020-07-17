@@ -18,7 +18,7 @@ namespace DCWR.Event_Manager
 
         public void ApplyMappings(ModelBuilder modelBuilder)
         {
-            var mappingTypes = typeof(EventManagerDbContext).Assembly
+            var mappingTypes = this.GetType().Assembly
                 .GetTypes()
                 .Where(type =>
                     !type.IsAbstract &&
