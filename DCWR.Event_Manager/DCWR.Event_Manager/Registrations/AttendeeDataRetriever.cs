@@ -23,7 +23,7 @@ namespace DCWR.Event_Manager.Registrations
 
         public async Task<PagedResponse<AttendeeData>> GetAttendeeDataOfEvent(Guid eventId, int pageSize, int pageNumber)
         {
-            Predicate<Registration> predicate = null;
+            Predicate<Registration> predicate = registration => registration.EventId == eventId;
             var attendees = await registrationRepository.GetAsync(pageSize, pageNumber, predicate);
             var pagingInfo = await GetPagingInfo(pageSize, pageNumber, predicate);
             return new PagedResponse<AttendeeData>(

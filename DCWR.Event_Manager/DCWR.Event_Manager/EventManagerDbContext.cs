@@ -1,5 +1,5 @@
-﻿using DCWR.Event_Manager.Events;
-using DCWR.Event_Manager.Registrations;
+﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace DCWR.Event_Manager
@@ -10,15 +10,32 @@ namespace DCWR.Event_Manager
         {
         }
 
-        public DbSet<Event> Events { get; set; }
-        public DbSet<Registration> Registrations { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Event>()
-                .HasMany<Registration>(nameof(Registration.EventId))
-                .WithOne(nameof(Event.Id));
+            ApplyMappings(modelBuilder);
             base.OnModelCreating(modelBuilder);
+        }
+
+        public void ApplyMappings(ModelBuilder modelBuilder)
+        {
+            var mappingTypes = typeof(EventManagerDbContext).Assembly
+                .GetTypes()
+                .Where(type =>
+                    !type.IsAbstract &&
+                    !type.IsInterface &&
+                    type.GetInterfaces()
+                        .Any(i =>
+                            i.IsGenericType &&
+                            i.GetGenericTypeDefinition()
+                                .IsAssignableFrom(typeof(IEntityTypeConfiguration<>))
+                        )
+                );
+
+            foreach (var type in mappingTypes)
+            {
+                dynamic mapping = Activator.CreateInstance(type);
+                modelBuilder.ApplyConfiguration(mapping);
+            }
         }
     }
 }
