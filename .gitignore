@@ -3,3 +3,6 @@
 ################################################################################
 
 /DCWR.Event_Manager/.vs/DCWR.Event_Manager/v16
+/DCWR.Event_Manager/DCWR.Event_Manager/obj
+/DCWR.Event_Manager/DCWR.Event_Manager.Contracts/obj
+/DCWR.Event_Manager/DCWR.Event_Manager.WebApi/obj
