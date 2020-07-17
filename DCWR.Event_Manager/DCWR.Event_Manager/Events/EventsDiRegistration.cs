@@ -15,7 +15,6 @@ namespace DCWR.Event_Manager.Events
         public void Register(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IEventBuilder, EventBuilder>();
-            serviceCollection.AddScoped<IEntityRepository<Event>, EntityRepository<Event>>();
             serviceCollection.AddScoped<ICreateEventValidator, CreateEventValidator>();
             serviceCollection.AddScoped<ICommandHandler<CreateEvent>, CreateEventHandler>();
             serviceCollection.AddScoped<IEventDataRetriever, EventDataRetriever>();
