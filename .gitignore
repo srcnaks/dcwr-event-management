@@ -6,3 +6,11 @@
 /DCWR.Event_Manager/DCWR.Event_Manager/obj
 /DCWR.Event_Manager/DCWR.Event_Manager.Contracts/obj
 /DCWR.Event_Manager/DCWR.Event_Manager.WebApi/obj
+/DCWR.Event_Manager/DCWR.Event_Manager/bin/Debug/netcoreapp3.1
+/DCWR.Event_Manager/DCWR.Event_Manager.Contracts/bin/Debug/netcoreapp3.1
+/DCWR.Event_Manager/DCWR.Event_Manager.WebApi/bin/Debug/netcoreapp3.1/DCWR.Event_Manager.WebApi.deps.json
+*.dll
+*.exe
+*.pdb
+/DCWR.Event_Manager/DCWR.Event_Manager.WebApi/bin/Debug/netcoreapp3.1/DCWR.Event_Manager.WebApi.runtimeconfig.dev.json
+/DCWR.Event_Manager/DCWR.Event_Manager.WebApi/bin/Debug/netcoreapp3.1/DCWR.Event_Manager.WebApi.runtimeconfig.json
