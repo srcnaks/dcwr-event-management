@@ -22,7 +22,7 @@ namespace DCWR.Event_Manager.WebApi.Controllers
             this.dispatcher = dispatcher;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateEvent([FromBody] CreateEventRequest request)
         {
