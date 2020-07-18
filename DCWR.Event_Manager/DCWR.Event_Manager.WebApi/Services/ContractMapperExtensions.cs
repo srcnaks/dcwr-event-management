@@ -1,4 +1,6 @@
-﻿using DCWR.Event_Manager.Contracts.Events.Commands;
+﻿using System;
+using DCWR.Event_Manager.Contracts.Events.Commands;
+using DCWR.Event_Manager.Contracts.Registrations.Commands;
 using DCWR.Event_Manager.WebApi.Models;
 
 namespace DCWR.Event_Manager.WebApi.Services
@@ -13,6 +15,16 @@ namespace DCWR.Event_Manager.WebApi.Services
                 location: request.Location,
                 startTime: request.StartTime,
                 endTime: request.EndTime
+            );
+        }
+
+        public static RegisterToEvent ToCommand(this RegisterToEventRequest request, Guid eventId)
+        {
+            return new RegisterToEvent(
+                eventId: eventId,
+                email: request.Email,
+                name: request.Name,
+                phoneNumber: request.PhoneNumber
             );
         }
     }
