@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCWR.Event_Manager.WebApi", "DCWR.Event_Manager.WebApi\DCWR.Event_Manager.WebApi.csproj", "{E383AAC8-A45A-4A00-AB5C-168765C50A96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DCWR.Event_Manager.WebApi", "DCWR.Event_Manager.WebApi\DCWR.Event_Manager.WebApi.csproj", "{E383AAC8-A45A-4A00-AB5C-168765C50A96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCWR.Event_Manager", "DCWR.Event_Manager\DCWR.Event_Manager.csproj", "{E6E4E854-2E6C-48F8-9144-39F4383B0AD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DCWR.Event_Manager", "DCWR.Event_Manager\DCWR.Event_Manager.csproj", "{E6E4E854-2E6C-48F8-9144-39F4383B0AD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCWR.Event_Manager.Contracts", "DCWR.Event_Manager.Contracts\DCWR.Event_Manager.Contracts.csproj", "{6F727B31-2676-4FC1-AEF7-12595044B02A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DCWR.Event_Manager.Contracts", "DCWR.Event_Manager.Contracts\DCWR.Event_Manager.Contracts.csproj", "{6F727B31-2676-4FC1-AEF7-12595044B02A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCWR.Event_Manager.Tests", "DCWR.Event_Manager.Tests\DCWR.Event_Manager.Tests.csproj", "{9F026A60-3D18-4C3A-833D-457D15B10FD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DCWR.Event_Manager.Tests", "DCWR.Event_Manager.Tests\DCWR.Event_Manager.Tests.csproj", "{9F026A60-3D18-4C3A-833D-457D15B10FD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCWR.Event_Manager.WebApp.Razor", "DCWR.Event_Manager.WebApp.Razor\DCWR.Event_Manager.WebApp.Razor.csproj", "{3FE3E0EB-FA41-47BA-8C9F-9C060B62FD36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCWR.Event_Manager.WebApp.MVC", "DCWR.Event_Manager.WebApp.MVC\DCWR.Event_Manager.WebApp.MVC.csproj", "{0D9F9B41-D8A4-4434-8765-02E3C6CDC238}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCWR.Event_ManagerWebApp.React", "DCWR.Event_ManagerWebApp.React\DCWR.Event_ManagerWebApp.React.csproj", "{E9835415-B4BD-435C-B9B9-29A9587DFA06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{9F026A60-3D18-4C3A-833D-457D15B10FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F026A60-3D18-4C3A-833D-457D15B10FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F026A60-3D18-4C3A-833D-457D15B10FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FE3E0EB-FA41-47BA-8C9F-9C060B62FD36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FE3E0EB-FA41-47BA-8C9F-9C060B62FD36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FE3E0EB-FA41-47BA-8C9F-9C060B62FD36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FE3E0EB-FA41-47BA-8C9F-9C060B62FD36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9F9B41-D8A4-4434-8765-02E3C6CDC238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9F9B41-D8A4-4434-8765-02E3C6CDC238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9F9B41-D8A4-4434-8765-02E3C6CDC238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9F9B41-D8A4-4434-8765-02E3C6CDC238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9835415-B4BD-435C-B9B9-29A9587DFA06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9835415-B4BD-435C-B9B9-29A9587DFA06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9835415-B4BD-435C-B9B9-29A9587DFA06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9835415-B4BD-435C-B9B9-29A9587DFA06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
