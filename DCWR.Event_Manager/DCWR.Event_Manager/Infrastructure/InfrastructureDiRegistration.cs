@@ -10,6 +10,7 @@ namespace DCWR.Event_Manager.Infrastructure
             serviceCollection.AddScoped(typeof(IEntityRepository<>), typeof(EntityRepository<>));
             serviceCollection.AddSingleton<IGuidIdGenerator>(GuidIdGenerator.Instance);
             serviceCollection.AddScoped(typeof(IPasswordHasher<>), typeof(PasswordHasher<>));
+            serviceCollection.AddScoped<ICommandQueryDispatcher, CommandQueryDispatcher>();
         }
     }
 }

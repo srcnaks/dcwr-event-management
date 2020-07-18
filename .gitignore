@@ -20,3 +20,6 @@
 /DCWR.Event_Manager/obj
 /DCWR.Event_Manager/DCWR.Event_Manager.WebApi/DCWR.Event_Manager.WebApi.csproj.user
 /DCWR.Event_Manager/.vs/DCWR.Event_Manager/DesignTimeBuild/.dtbcache.v2
+/DCWR.Event_Manager/DCWR.Event_Manager.WebApp.MVC/obj
+/DCWR.Event_Manager/DCWR.Event_Manager.WebApp.Razor/obj
+/DCWR.Event_Manager/DCWR.Event_ManagerWebApp.React/obj
