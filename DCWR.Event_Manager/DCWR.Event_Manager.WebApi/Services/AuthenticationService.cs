@@ -31,7 +31,6 @@ namespace DCWR.Event_Manager.WebApi.Services
             var token = tokenGenerator.GenerateJwtToken(user.Id);
             return new AuthenticateResponse(
                 id: user.Id,
-                username: user.UserName,
                 token: token
             );
         }

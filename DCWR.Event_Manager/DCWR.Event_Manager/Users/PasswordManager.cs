@@ -24,8 +24,8 @@ namespace DCWR.Event_Manager.Users
 
         public bool ValidatePassword(User user, string password)
         {
-            var hash = GenerateHash(user, password);
-            return hash == user.PasswordHash;
+            var result = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
+            return result != PasswordVerificationResult.Failed;
         }
     }
 }
