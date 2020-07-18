@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using DCWR.Event_Manager.WebApi;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DCWR.Event_Manager.Tests.Infrastructure
@@ -17,7 +19,12 @@ namespace DCWR.Event_Manager.Tests.Infrastructure
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .ConfigureAppConfiguration(builder => 
+                    builder
+                        .SetBasePath(Directory.GetCurrentDirectory())
+                        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                );
 
             var server = new TestServer(host) { BaseAddress = new Uri(Url) };
             Client = server.CreateClient();

@@ -1,4 +1,7 @@
-﻿using DCWR.Event_Manager.WebApi.Models;
+﻿using System;
+using System.Threading.Tasks;
+using DCWR.Event_Manager.Infrastructure.Exceptions;
+using DCWR.Event_Manager.WebApi.Models;
 using DCWR.Event_Manager.WebApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,10 +21,18 @@ namespace DCWR.Event_Manager.WebApi.Controllers
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody]AuthenticateRequest model)
+        public async Task<IActionResult> Authenticate([FromBody]AuthenticateRequest model)
         {
-            var response = authenticationService.Authenticate(model);
-            return Ok(response);
+
+            try
+            {
+                var response = await authenticationService.Authenticate(model);
+                return Ok(response);
+            }
+            catch (AuthenticationFailed ex)
+            {
+                return BadRequest(new { message = "Username or password is incorrect" });
+            }
         }
     }
 }
