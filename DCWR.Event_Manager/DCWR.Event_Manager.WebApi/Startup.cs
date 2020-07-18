@@ -31,6 +31,7 @@ namespace DCWR.Event_Manager.WebApi
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             ConfigureAuthentication(services);
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
