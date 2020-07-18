@@ -2,18 +2,8 @@
 {
     public class RegisterToEventRequest
     {
-        public string Email { get; }
-        public string Name { get; }
-        public string PhoneNumber { get; }
-
-        public RegisterToEventRequest(
-            string email,
-            string name,
-            string phoneNumber)
-        {
-            Email = email;
-            Name = name;
-            PhoneNumber = phoneNumber;
-        }
+        public string Email { get; set; }
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

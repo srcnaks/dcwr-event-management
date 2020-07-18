@@ -1,19 +1,24 @@
 ﻿using System;
-using DCWR.Event_Manager.Contracts.Events.Commands;
+using System.Collections.Generic;
+using System.Text;
+using DCWR.Event_Manager.Events;
+using DCWR.Event_Manager.Infrastructure;
 using DCWR.Event_Manager.Tests.Infrastructure;
 
-namespace DCWR.Event_Manager.Tests.Shared.ObjectBuilders.Contracts
+namespace DCWR.Event_Manager.Tests.Shared.ObjectBuilders.DomainEntities
 {
-    public class CreateEventBuilder
+    public class EventBuilder
     {
+        public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public string Location { get; private set; }
         public DateTime StartTime { get; private set; }
         public DateTime EndTime { get; private set; }
 
-        public CreateEventBuilder()
+        public EventBuilder()
         {
+            Id = GuidIdGenerator.Instance.Generate();
             Name = RandomGenerator.GetWord();
             Description = RandomGenerator.GetWords();
             Location = RandomGenerator.GetWords();
@@ -21,14 +26,15 @@ namespace DCWR.Event_Manager.Tests.Shared.ObjectBuilders.Contracts
             EndTime = DateTime.Today.AddHours(14);
         }
 
-        public CreateEvent Build()
+        public Event Build()
         {
-            return new CreateEvent(
-                name: Name,
-                description: Description,
-                location: Location,
-                startTime: StartTime,
-                endTime: EndTime
+            return new Event(
+                Id,
+                Name,
+                Description,
+                Location,
+                StartTime,
+                EndTime
             );
         }
     }

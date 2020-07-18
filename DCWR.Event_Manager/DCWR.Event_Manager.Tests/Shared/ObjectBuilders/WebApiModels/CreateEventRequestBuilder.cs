@@ -1,10 +1,10 @@
 ﻿using System;
-using DCWR.Event_Manager.Contracts.Events.Commands;
 using DCWR.Event_Manager.Tests.Infrastructure;
+using DCWR.Event_Manager.WebApi.Models;
 
-namespace DCWR.Event_Manager.Tests.Shared.ObjectBuilders.Contracts
+namespace DCWR.Event_Manager.Tests.Shared.ObjectBuilders.WebApiModels
 {
-    public class CreateEventBuilder
+    public class CreateEventRequestBuilder
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
@@ -12,7 +12,7 @@ namespace DCWR.Event_Manager.Tests.Shared.ObjectBuilders.Contracts
         public DateTime StartTime { get; private set; }
         public DateTime EndTime { get; private set; }
 
-        public CreateEventBuilder()
+        public CreateEventRequestBuilder()
         {
             Name = RandomGenerator.GetWord();
             Description = RandomGenerator.GetWords();
@@ -21,15 +21,16 @@ namespace DCWR.Event_Manager.Tests.Shared.ObjectBuilders.Contracts
             EndTime = DateTime.Today.AddHours(14);
         }
 
-        public CreateEvent Build()
+        public CreateEventRequest Build()
         {
-            return new CreateEvent(
-                name: Name,
-                description: Description,
-                location: Location,
-                startTime: StartTime,
-                endTime: EndTime
-            );
+            return new CreateEventRequest()
+            {
+                Name= Name,
+                Description = Description,
+                Location = Location,
+                StartTime = StartTime,
+                EndTime = EndTime
+            };
         }
     }
 }

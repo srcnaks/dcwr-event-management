@@ -33,9 +33,9 @@ namespace DCWR.Event_Manager.WebApi.Controllers
             return Ok();
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
-        public async Task<PagedResponse<AttendeeData>> GetEvents(
+        public async Task<PagedResponse<AttendeeData>> GetRegistrationsOfEvent(
             [FromRoute(Name = "eventId")] Guid eventId,
             [FromQuery] PagedRequest request)
         {
