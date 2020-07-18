@@ -1,7 +1,6 @@
 using System.Text;
 using DCWR.Event_Manager.WebApi.Services;
 using DCWR.Event_Manager.WebApi.Settings;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
