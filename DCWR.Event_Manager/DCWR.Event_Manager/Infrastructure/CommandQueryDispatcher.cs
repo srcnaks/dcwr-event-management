@@ -10,7 +10,8 @@ namespace DCWR.Event_Manager.Infrastructure
 {
     public interface ICommandQueryDispatcher
     {
-        Task DispatchAsync(ICommand command);
+        Task DispatchAsync<T>(T command) 
+            where T : class, ICommand;
 
         Task<TResponse> DispatchAsync<TResponse, TQuery>(TQuery query)
             where TQuery : class, IQuery<TResponse>;
@@ -25,13 +26,14 @@ namespace DCWR.Event_Manager.Infrastructure
             this.serviceProvider = serviceProvider;
         }
 
-        public Task DispatchAsync(ICommand command)
+        public Task DispatchAsync<T>(T command) where T : class, ICommand
         {
             var handler = GetCommandHandler(command);
             return handler.HandleAsync(command);
         }
 
-        public Task<TResponse> DispatchAsync<TResponse, TQuery>(TQuery query) where TQuery : class, IQuery<TResponse>
+        public Task<TResponse> DispatchAsync<TResponse, TQuery>(TQuery query)
+            where TQuery : class, IQuery<TResponse>
         {
             var handler = GetQueryHandler<TQuery,TResponse>(query);
             return handler.HandleAsync(query);
@@ -40,17 +42,11 @@ namespace DCWR.Event_Manager.Infrastructure
 
         private ICommandHandler<T> GetCommandHandler<T>(T command) where T : ICommand
         {
-            //var generic = typeof(ICommandHandler<>);
-            //Type constructed = generic.MakeGenericType(command.GetType());
-            //var handler = serviceProvider.GetService(constructed) as ICommandHandler<T>;
             return serviceProvider.GetService<ICommandHandler<T>>();
         }
 
         private IQueryHandler<TQuery,TResponse> GetQueryHandler<TQuery, TResponse>(TQuery query) where TQuery : IQuery<TResponse>
         {
-            //var queryHandlerType = typeof(IQueryHandler<,>);
-            //var genericHandlerType = queryHandlerType.MakeGenericType(typeof(TResponse), typeof(TQuery));
-            //var handler = serviceProvider.GetService(genericHandlerType);
             return serviceProvider.GetService<IQueryHandler<TQuery, TResponse>>();
         }
     }

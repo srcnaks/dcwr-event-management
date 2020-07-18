@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,23 +68,14 @@ namespace DCWR.Event_Manager.Tests.WebApiTests
 
         private async Task<HttpResponseMessage> PostAuthenticateRequest(string userName, string password)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, "api/users/authenticate")
-            {
-                Content = CreateRequestContent(
-                    new AuthenticateRequest()
-                    {
-                        Username = userName,
-                        Password = password
-                    }
-                )
-            };
-            return await fixture.Client.SendAsync(request);
-        }
-
-        private static StringContent CreateRequestContent(AuthenticateRequest content)
-        {
-            var json = JsonConvert.SerializeObject(content);
-            return new StringContent(json, Encoding.UTF8, "application/json");
+            return await fixture.PostAsync(
+                url: "api/users/authenticate",
+                content: new AuthenticateRequest()
+                {
+                    Username = userName,
+                    Password = password
+                }
+            );
         }
     }
 }

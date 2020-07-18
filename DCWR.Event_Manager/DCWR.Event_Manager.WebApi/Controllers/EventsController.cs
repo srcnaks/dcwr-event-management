@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
 using DCWR.Event_Manager.Contracts.Events.Entities;
 using DCWR.Event_Manager.Contracts.Events.Queries;
 using DCWR.Event_Manager.Contracts.Utilities;
@@ -21,13 +22,18 @@ namespace DCWR.Event_Manager.WebApi.Controllers
             this.dispatcher = dispatcher;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateEvent([FromBody] CreateEventRequest request)
         {
             var command = request.ToCommand();
             await dispatcher.DispatchAsync(command);
-            return Created("", command.CreatedId);
+            return new ContentResult
+            {
+                ContentType = "application/json",
+                Content = command.CreatedId.ToString(),
+                StatusCode = (int)HttpStatusCode.Created
+            };
         }
 
         [AllowAnonymous]

@@ -1,7 +1,6 @@
-﻿using DCWR.Event_Manager.Tests.Infrastructure;
-using Xunit;
+﻿using Xunit;
 
-namespace DCWR.Event_Manager.Tests.WebApiTests
+namespace DCWR.Event_Manager.Tests.Infrastructure
 {
     [CollectionDefinition(WebApiTestCollection.Name)]
     public class WebApiTestCollection : ICollectionFixture<Fixture>

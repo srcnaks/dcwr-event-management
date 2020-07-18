@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using DCWR.Event_Manager.Contracts.Registrations.Entities;
 using DCWR.Event_Manager.Contracts.Utilities;
@@ -23,7 +24,7 @@ namespace DCWR.Event_Manager.Registrations
 
         public async Task<PagedResponse<AttendeeData>> GetAttendeeDataOfEvent(Guid eventId, int pageSize, int pageNumber)
         {
-            Predicate<Registration> predicate = registration => registration.EventId == eventId;
+            Expression<Func<Registration, bool>> predicate = registration => registration.EventId == eventId;
             var attendees = await registrationRepository.GetAsync(pageSize, pageNumber, predicate);
             var pagingInfo = await GetPagingInfo(pageSize, pageNumber, predicate);
             return new PagedResponse<AttendeeData>(
@@ -32,7 +33,7 @@ namespace DCWR.Event_Manager.Registrations
             );
         }
 
-        private async Task<PagingInfo> GetPagingInfo(int pageSize, int pageNumber, Predicate<Registration> predicate)
+        private async Task<PagingInfo> GetPagingInfo(int pageSize, int pageNumber, Expression<Func<Registration, bool>>  predicate)
         {
             var totalCount = await registrationRepository.GetCountAsync(predicate);
             return new PagingInfo(pageNumber, pageSize, totalCount);
