@@ -35,8 +35,8 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
   }
 
   private ensureDataFetched() {
-    const startDateIndex = parseInt(this.props.match.params.startDateIndex, 10) || 0;
-    this.props.requestWeatherForecasts(startDateIndex);
+      const startDateIndex = parseInt(this.props.match.params.startDateIndex, 10) || 0;
+      this.props.requestWeatherForecasts(startDateIndex);
   }
 
   private renderForecastsTable() {

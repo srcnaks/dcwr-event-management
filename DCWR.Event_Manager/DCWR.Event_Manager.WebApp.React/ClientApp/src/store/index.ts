@@ -3,6 +3,7 @@ import * as Counter from './Counter';
 import * as Authentication from './Authentication';
 import * as Event from './Event';
 import * as EventList from './EventList';
+import EventListState = EventList.EventListState;
 
 // The top-level state object
 export interface ApplicationState {
@@ -10,7 +11,7 @@ export interface ApplicationState {
     weatherForecasts: WeatherForecasts.WeatherForecastsState | undefined;
     authentication: Authentication.AuthenticationState | undefined;
     event: Event.EventState | undefined;
-    eventList: EventList.EventsState | undefined;
+    eventList: EventList.EventListState | undefined;
 }
 
 // Whenever an action is dispatched, Redux will update each top-level application state property using
