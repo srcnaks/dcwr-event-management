@@ -40,25 +40,48 @@ class Event extends React.PureComponent<ApplicationProps> {
         }
     }
 
+    handleCreateNew = () => {
+        this.setState({
+            name: '',
+            description: '',
+            location: '',
+            startTime: '',
+            endTime: '',
+            submitted: false
+        });
+        this.props.clearPage();
+    }
+
     public render() {
-        const { isLoading } = this.props;
+        const { isLoading, isCreated, message } = this.props;
         const { name, description, location, startTime, endTime, submitted } = this.state;
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h2>Create Event</h2>
                 <div>
                     <FormInput label="Name" name="name" value={name} handleChange={this.handleChange}/>
-                    <FormInput label="Description" name="description" value={description} handleChange={this.handleChange} />
-                    <FormInput label="Location" name="location" value={location} handleChange={this.handleChange} />
-                    <FormInput label="Start Time" name="startTime" value={startTime} handleChange={this.handleChange} />
-                    <FormInput label="End Time" name="endTime" value={endTime} handleChange={this.handleChange} />
-                    <div className="form-group">
-                        <button className="btn btn-primary" onClick={this.handleSubmit} disabled={isLoading}>Create</button>
-                    </div>
+                    <FormInput label="Description" name="description" value={description} handleChange={this.handleChange}/>
+                    <FormInput label="Location" name="location" value={location} handleChange={this.handleChange}/>
+                    <FormInput label="Start Time" name="startTime" value={startTime} handleChange={this.handleChange}/>
+                    <FormInput label="End Time" name="endTime" value={endTime} handleChange={this.handleChange}/>
+                    {
+                        isCreated
+                            ? <div className="form-group">
+                                <span>Successfully Created with id: {this.props.message}</span>
+                                <button className="btn btn-primary" onClick={this.handleCreateNew}>Reset Page</button>
+                            </div>
+                            : <div className="form-group">
+                                 {message && <span>{message}</span>}
+                                <button className="btn btn-primary" onClick={this.handleSubmit}>Create</button>
+                            </div>
+                    }
+                    
                 </div>
             </div>
             );
     }
+
+
 }
 
 export default connect(

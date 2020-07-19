@@ -7,6 +7,7 @@ import { authToken } from '../helpers/authHeader';
 // STATE
 export interface EventState {
     isLoading: boolean;
+    isCreated: boolean;
     message: string;
 }
 
@@ -35,45 +36,64 @@ interface EventCreationFailed {
     message: string;
 }
 
-type KnownAction = CreateEventRequested | EventCreated | EventCreationFailed;
+interface ResetEventCreation {
+    type: 'CLEAR_PAGE';
+}
+
+type KnownAction = CreateEventRequested | EventCreated | EventCreationFailed | ResetEventCreation;
 
 // ----------------
 // ACTION CREATORS
 
 export const actionCreators = {
-    postEvent: (name: string, description: string, location: string, startTime: string, endTime: string): AppThunkAction<KnownAction> => (dispatch, getState) => {
+    postEvent: (name: string, description: string, location: string, startTime: string, endTime: string):
+        AppThunkAction<KnownAction> => (dispatch, getState) => {
+            const appState = getState();
+            if (appState &&
+                appState.event &&
+                appState.event.isLoading) {
+                return;
+            }
+
+            fetch(
+                    `api/events`,
+                    {
+                        method: 'post',
+                        body: JSON.stringify({
+                            name: name,
+                            description: description,
+                            location: location,
+                            //startTime: startTime,
+                            //endTime: endTime
+                        }),
+                        headers: new Headers({
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': authToken()
+                        })
+                    }
+                )
+                .then(response => {
+                    const txt = response.text();
+                    if (!response.ok) {
+                        dispatch({ type: 'CREATE_EVENT_FAILED', message: "Failed!!!..." });
+                    } else {
+                        response.text().then(data => {
+                            dispatch({ type: 'EVENT_CREATED', id: data });
+                        });
+                    }
+                });
+
+            dispatch({ type: 'CREATE_EVENT_REQUESTED' });
+        },
+    clearPage: (): AppThunkAction<KnownAction> => (dispatch, getState) => {
         const appState = getState();
         if (appState &&
             appState.event &&
             appState.event.isLoading) {
             return;
         }
-
-        fetch(
-                `api/events`,
-                {
-                    method: 'post',
-                    body: JSON.stringify({
-                        name: name,
-                        description: description,
-                        location: location,
-                        //startTime: startTime,
-                        //endTime: endTime
-                    }),
-                    headers: new Headers({
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'Authorization': authToken()
-                    })
-                }
-            )
-            .then(response => response.text())
-            .then(data => {
-                dispatch({ type: 'EVENT_CREATED', id: data });
-            })
-            .catch(reason => dispatch({ type: 'CREATE_EVENT_FAILED', message: reason }));
-
-        dispatch({ type: 'CREATE_EVENT_REQUESTED' });
+        dispatch({ type: 'CLEAR_PAGE' });
     }
 };
 
@@ -82,6 +102,7 @@ export const actionCreators = {
 
 const unloadedState: EventState = {
     isLoading: false,
+    isCreated: false,
     message: ""
 };
 
@@ -96,17 +117,26 @@ export const reducer: Reducer<EventState> = (state: EventState | undefined, inco
             const eventCreated = action as EventCreated;
             return {
                 isLoading: false,
+                isCreated:true,
                 message: eventCreated.id
             };
         case 'CREATE_EVENT_FAILED':
             const eventCreationFailed = action as EventCreationFailed;
             return {
                 isLoading: false,
+                isCreated: false,
                 message: eventCreationFailed.message
             };
         case 'CREATE_EVENT_REQUESTED':
             return {
                 isLoading: true,
+                isCreated: false,
+                message: ""
+            };
+        case 'CLEAR_PAGE':
+            return {
+                isLoading: false,
+                isCreated: false,
                 message: ""
             };
     }
