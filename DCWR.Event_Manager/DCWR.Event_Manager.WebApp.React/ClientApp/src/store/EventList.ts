@@ -3,11 +3,17 @@ import { AppThunkAction } from './';
 
 // -----------------
 // STATE
-export interface EventsState {
+export interface EventListState {
     isLoading: boolean;
-    startDateIndex: number;
-    pageSize: number,
+    pageNumber: number;
+    pageSize: number;
+    totalCount: number;
     events: EventData[];
+}
+
+interface EventListResponse {
+    paging: Paging;
+    results: EventData[];
 }
 
 export interface EventData {
@@ -19,19 +25,25 @@ export interface EventData {
     endTime: string;
 }
 
+interface Paging {
+    pageNumber: number;
+    pageSize: number;
+    totalCount: number;
+}
+
 // -----------------
 // ACTIONS 
 
 interface GetEventsRequested {
     type: 'GET_EVENTS';
-    startDateIndex: number;
+    pageNumber: number;
     pageSize: number;
 }
 
 interface EventsReceived {
     type: 'EVENTS_RECEIVED';
-    startDateIndex: number;
-    events: EventData[];
+    pageNumber: number;
+    events: EventListResponse;
 }
 
 type KnownAction = GetEventsRequested | EventsReceived;
@@ -40,34 +52,35 @@ type KnownAction = GetEventsRequested | EventsReceived;
 // ACTION CREATORS
 
 export const actionCreators = {
-    getEvents: (startDateIndex: number, pageSize: number): AppThunkAction<KnownAction> => (dispatch, getState) => {
+    getEvents: (pageNumber: number, pageSize: number): AppThunkAction<KnownAction> => (dispatch, getState) => {
         const appState = getState();
         if (appState &&
-            appState.authentication &&
-            appState.authentication.submitted) {
+            appState.eventList &&
+            appState.eventList.isLoading) {
             return;
         }
-        fetch(`api/events?pageNumber=${startDateIndex}&pageSize=${pageSize}`)
-            .then(response => response.json() as Promise<EventData[]>)
+        fetch(`api/events?pageNumber=${pageNumber}&pageSize=${pageSize}`)
+            .then(response => response.json() as Promise<EventListResponse>)
             .then(data => {
-                dispatch({ type: 'EVENTS_RECEIVED', startDateIndex: startDateIndex, events: data });
+                dispatch({ type: 'EVENTS_RECEIVED', pageNumber: pageNumber, events: data });
             });
 
-        dispatch({ type: 'GET_EVENTS', startDateIndex: startDateIndex, pageSize: pageSize });
+        dispatch({ type: 'GET_EVENTS', pageNumber: pageNumber, pageSize: pageSize });
     }
 };
 
 // ----------------
 // REDUCER
 
-const unloadedState: EventsState = {
+const unloadedState: EventListState = {
     isLoading: false,
-    startDateIndex: 1,
+    pageNumber: 1,
     pageSize: 10,
+    totalCount: 0,
     events: []
 };
 
-export const reducer: Reducer<EventsState> = (state: EventsState | undefined, incomingAction: Action): EventsState => {
+export const reducer: Reducer<EventListState> = (state: EventListState | undefined, incomingAction: Action): EventListState => {
     if (state === undefined) {
         return unloadedState;
     }
@@ -75,17 +88,21 @@ export const reducer: Reducer<EventsState> = (state: EventsState | undefined, in
     const action = incomingAction as KnownAction;
     switch (action.type) {
         case 'EVENTS_RECEIVED':
+            const received = action as EventsReceived;
             return {
                 isLoading: false,
-                startDateIndex: action.startDateIndex,
-                pageSize: state.pageSize,
-                events: action.events
+                pageNumber: received.events.paging.pageNumber,
+                pageSize: received.events.paging.pageSize,
+                totalCount: received.events.paging.totalCount,
+                events: received.events.results
             };
         case 'GET_EVENTS':
+            const requested = action as GetEventsRequested;
             return {
                 isLoading: true,
-                startDateIndex: action.startDateIndex,
-                pageSize: action.pageSize,
+                pageNumber: requested.pageNumber,
+                pageSize: requested.pageSize,
+                totalCount: 0,
                 events: []
             };
     }
