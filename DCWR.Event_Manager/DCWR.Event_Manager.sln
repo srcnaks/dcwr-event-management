@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DCWR.Event_Manager.WebApi", "DCWR.Event_Manager.WebApi\DCWR.Event_Manager.WebApi.csproj", "{E383AAC8-A45A-4A00-AB5C-168765C50A96}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DCWR.Event_Manager", "DCWR.Event_Manager\DCWR.Event_Manager.csproj", "{E6E4E854-2E6C-48F8-9144-39F4383B0AD2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DCWR.Event_Manager.Contracts", "DCWR.Event_Manager.Contracts\DCWR.Event_Manager.Contracts.csproj", "{6F727B31-2676-4FC1-AEF7-12595044B02A}"
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E383AAC8-A45A-4A00-AB5C-168765C50A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E383AAC8-A45A-4A00-AB5C-168765C50A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E383AAC8-A45A-4A00-AB5C-168765C50A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E383AAC8-A45A-4A00-AB5C-168765C50A96}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E6E4E854-2E6C-48F8-9144-39F4383B0AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E6E4E854-2E6C-48F8-9144-39F4383B0AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6E4E854-2E6C-48F8-9144-39F4383B0AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
