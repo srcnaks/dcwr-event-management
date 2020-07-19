@@ -20,12 +20,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DCWR.Event_Manager.Contracts\DCWR.Event_Manager.Contracts.csproj" />
-    <ProjectReference Include="..\DCWR.Event_Manager.WebApi\DCWR.Event_Manager.WebApi.csproj" />
+    <ProjectReference Include="..\DCWR.Event_Manager.WebApp.React\DCWR.Event_Manager.WebApp.React.csproj" />
     <ProjectReference Include="..\DCWR.Event_Manager\DCWR.Event_Manager.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\DCWR.Event_Manager.WebApi\appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\DCWR.Event_Manager.WebApp.React\appsettings.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

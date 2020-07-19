@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DCWR.Event_Manager.Tests.Infrastructure;
-using DCWR.Event_Manager.WebApi.Models;
+﻿using DCWR.Event_Manager.Tests.Infrastructure;
+using DCWR.Event_Manager.WebApp.React.Controllers.Events.Contracts;
 
 namespace DCWR.Event_Manager.Tests.Shared.ObjectBuilders.WebApiModels
 {

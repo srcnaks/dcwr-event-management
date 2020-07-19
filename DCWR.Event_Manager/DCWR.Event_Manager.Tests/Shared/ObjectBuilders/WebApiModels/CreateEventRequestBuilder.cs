@@ -1,6 +1,6 @@
 ﻿using System;
 using DCWR.Event_Manager.Tests.Infrastructure;
-using DCWR.Event_Manager.WebApi.Models;
+using DCWR.Event_Manager.WebApp.React.Controllers.Events.Contracts;
 
 namespace DCWR.Event_Manager.Tests.Shared.ObjectBuilders.WebApiModels
 {

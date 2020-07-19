@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using DCWR.Event_Manager.Contracts.Registrations.Entities;
 using DCWR.Event_Manager.Contracts.Utilities;
@@ -10,7 +9,6 @@ using DCWR.Event_Manager.Tests.Shared.ObjectBuilders.DomainEntities;
 using DCWR.Event_Manager.Tests.Shared.ObjectBuilders.WebApiModels;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using NSubstitute;
 using Xunit;
 
 namespace DCWR.Event_Manager.Tests.WebApiTests
@@ -36,7 +34,7 @@ namespace DCWR.Event_Manager.Tests.WebApiTests
 
             // when
             var httpResponse = await fixture.PostAsync(
-                url: $"api/events/{@event.Id}/registration",
+                url: $"api/events/{@event.Id}/registrations",
                 content: request
             );
 
@@ -78,7 +76,7 @@ namespace DCWR.Event_Manager.Tests.WebApiTests
 
             // when
             var response = await fixture.GetAsync<PagedResponse<AttendeeData>>(
-                url: $"api/events/{@event.Id}/registration",
+                url: $"api/events/{@event.Id}/registrations",
                 userId
             );
 
