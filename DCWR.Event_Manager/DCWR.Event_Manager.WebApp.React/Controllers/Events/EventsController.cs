@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
 using DCWR.Event_Manager.Contracts.Events.Entities;
 using DCWR.Event_Manager.Contracts.Events.Queries;
@@ -10,7 +7,6 @@ using DCWR.Event_Manager.Infrastructure;
 using DCWR.Event_Manager.WebApp.React.Common.Contracts;
 using DCWR.Event_Manager.WebApp.React.Controllers.Events.Contracts;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DCWR.Event_Manager.WebApp.React.Controllers.Events

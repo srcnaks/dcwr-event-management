@@ -22,7 +22,6 @@ namespace DCWR.Event_Manager.WebApp.React.Controllers.Users
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody]AuthenticateRequest model)
         {
-
             try
             {
                 var response = await authenticationService.Authenticate(model);
