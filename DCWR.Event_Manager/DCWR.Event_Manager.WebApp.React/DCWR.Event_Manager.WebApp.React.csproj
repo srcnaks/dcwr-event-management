@@ -30,8 +30,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\Event.tsx" />
+    <None Remove="ClientApp\src\components\FormInput.tsx" />
+    <None Remove="ClientApp\src\components\LoginPage.tsx" />
+    <None Remove="ClientApp\src\helpers\authHeader.ts" />
+    <None Remove="ClientApp\src\services\authenticationService.js" />
+    <None Remove="ClientApp\src\store\Event.ts" />
+    <None Remove="ClientApp\src\store\EventList.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DCWR.Event_Manager.Contracts\DCWR.Event_Manager.Contracts.csproj" />
     <ProjectReference Include="..\DCWR.Event_Manager\DCWR.Event_Manager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\components\Event.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\FormInput.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\LoginPage.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\helpers\authHeader.ts" />
+    <TypeScriptCompile Include="ClientApp\src\services\authenticationService.js" />
+    <TypeScriptCompile Include="ClientApp\src\store\Event.ts" />
+    <TypeScriptCompile Include="ClientApp\src\store\EventList.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
