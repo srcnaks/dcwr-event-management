@@ -40,6 +40,17 @@ var Event = /** @class */ (function (_super) {
                 _this.props.postEvent(name, description, location, startTime, endTime);
             }
         };
+        _this.handleCreateNew = function () {
+            _this.setState({
+                name: '',
+                description: '',
+                location: '',
+                startTime: '',
+                endTime: '',
+                submitted: false
+            });
+            _this.props.clearPage();
+        };
         return _this;
     }
     // This method is called when the component is first added to the document
@@ -49,8 +60,8 @@ var Event = /** @class */ (function (_super) {
     Event.prototype.componentDidUpdate = function () {
     };
     Event.prototype.render = function () {
-        var isLoading = this.props.isLoading;
-        var _a = this.state, name = _a.name, description = _a.description, location = _a.location, startTime = _a.startTime, endTime = _a.endTime, submitted = _a.submitted;
+        var _a = this.props, isLoading = _a.isLoading, isCreated = _a.isCreated, message = _a.message;
+        var _b = this.state, name = _b.name, description = _b.description, location = _b.location, startTime = _b.startTime, endTime = _b.endTime, submitted = _b.submitted;
         return (React.createElement("div", { className: "col-md-6 col-md-offset-3" },
             React.createElement("h2", null, "Create Event"),
             React.createElement("div", null,
@@ -59,8 +70,15 @@ var Event = /** @class */ (function (_super) {
                 React.createElement(FormInput_1.default, { label: "Location", name: "location", value: location, handleChange: this.handleChange }),
                 React.createElement(FormInput_1.default, { label: "Start Time", name: "startTime", value: startTime, handleChange: this.handleChange }),
                 React.createElement(FormInput_1.default, { label: "End Time", name: "endTime", value: endTime, handleChange: this.handleChange }),
-                React.createElement("div", { className: "form-group" },
-                    React.createElement("button", { className: "btn btn-primary", onClick: this.handleSubmit, disabled: isLoading }, "Create")))));
+                isCreated
+                    ? React.createElement("div", { className: "form-group" },
+                        React.createElement("span", null,
+                            "Successfully Created with id: ",
+                            this.props.message),
+                        React.createElement("button", { className: "btn btn-primary", onClick: this.handleCreateNew }, "Reset Page"))
+                    : React.createElement("div", { className: "form-group" },
+                        message && React.createElement("span", null, message),
+                        React.createElement("button", { className: "btn btn-primary", onClick: this.handleSubmit }, "Create")))));
     };
     return Event;
 }(React.PureComponent));
