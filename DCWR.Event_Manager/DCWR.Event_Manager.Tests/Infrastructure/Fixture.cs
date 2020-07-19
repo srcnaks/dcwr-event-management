@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using DCWR.Event_Manager.WebApi;
+using DCWR.Event_Manager.WebApp.React;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 
 namespace DCWR.Event_Manager.Tests.Infrastructure

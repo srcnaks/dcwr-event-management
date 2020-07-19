@@ -5,10 +5,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using DCWR.Event_Manager.WebApi.Services;
+using DCWR.Event_Manager.WebApp.React.Controllers.Users.Services;
 using FluentAssertions;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace DCWR.Event_Manager.Tests.Infrastructure
 {

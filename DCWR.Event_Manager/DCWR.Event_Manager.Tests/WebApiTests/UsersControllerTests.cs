@@ -1,9 +1,8 @@
 ﻿using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using DCWR.Event_Manager.Tests.Infrastructure;
-using DCWR.Event_Manager.WebApi.Models;
+using DCWR.Event_Manager.WebApp.React.Controllers.Users.Contracts;
 using FluentAssertions;
 using Newtonsoft.Json;
 using Xunit;

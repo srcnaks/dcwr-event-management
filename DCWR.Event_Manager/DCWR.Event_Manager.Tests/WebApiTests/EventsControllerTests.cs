@@ -7,9 +7,7 @@ using DCWR.Event_Manager.Events;
 using DCWR.Event_Manager.Infrastructure;
 using DCWR.Event_Manager.Tests.Infrastructure;
 using DCWR.Event_Manager.Tests.Shared.ObjectBuilders.WebApiModels;
-using DCWR.Event_Manager.WebApi.Models;
 using FluentAssertions;
-using Newtonsoft.Json;
 using Xunit;
 using EventBuilder = DCWR.Event_Manager.Tests.Shared.ObjectBuilders.DomainEntities.EventBuilder;
 
