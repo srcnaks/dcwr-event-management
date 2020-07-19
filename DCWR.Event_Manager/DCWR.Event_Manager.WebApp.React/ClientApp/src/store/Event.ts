@@ -74,7 +74,6 @@ export const actionCreators = {
                     }
                 )
                 .then(response => {
-                    const txt = response.text();
                     if (!response.ok) {
                         dispatch({ type: 'CREATE_EVENT_FAILED', message: "Failed!!!..." });
                     } else {
